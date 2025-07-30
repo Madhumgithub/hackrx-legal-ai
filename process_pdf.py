@@ -46,3 +46,10 @@ def split_text(text: str, max_chunk_size: int = 500) -> List[str]:
     if chunk:
         chunks.append(chunk.strip())
     return chunks
+
+def extract_text_from_pdf(file_path):
+    text = ""
+    doc = fitz.open(file_path)
+    for page in doc:
+        text += page.get_text()
+    return text
